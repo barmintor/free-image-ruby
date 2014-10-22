@@ -31,7 +31,7 @@ module FreeImage
       end
 
       ptr = FreeImage.FreeImage_GetPalette(@bitmap)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       RGBQuad.new(ptr[index])
     end
 

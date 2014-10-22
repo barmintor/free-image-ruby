@@ -50,7 +50,7 @@ module FreeImage
     #
     def convert_to_4bits(&block)
       ptr = FreeImage.FreeImage_ConvertTo4Bits(self)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -71,7 +71,7 @@ module FreeImage
     #
     def convert_to_8bits(&block)
       ptr = FreeImage.FreeImage_ConvertTo8Bits(self)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -88,7 +88,7 @@ module FreeImage
     #
     def convert_to_greyscale(&block)
       ptr = FreeImage.FreeImage_ConvertToGreyscale(self)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -105,7 +105,7 @@ module FreeImage
     #
     def convert_to_16bits_555(&block)
       ptr = FreeImage.FreeImage_ConvertTo16Bits555(self)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -122,7 +122,7 @@ module FreeImage
     #
     def convert_to_16bits_565(&block)
       ptr = FreeImage.FreeImage_ConvertTo16Bits565(self)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -139,7 +139,7 @@ module FreeImage
     #
     def convert_to_24bits(&block)
       ptr = FreeImage.FreeImage_ConvertTo24Bits(self)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -158,7 +158,7 @@ module FreeImage
     #
     def convert_to_32bits(&block)
       ptr = FreeImage.FreeImage_ConvertTo32Bits(self)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -185,7 +185,7 @@ module FreeImage
     #
     def convert_to_standard_type(scale_linear = true, &block)
       ptr = FreeImage.FreeImage_ConvertToStandardType(self, scale_linear)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -204,7 +204,7 @@ module FreeImage
     #
     def convert_to_type(dst_image_type, scale_linear = true, &block)
       ptr = FreeImage.FreeImage_ConvertToType(self, dst_image_type, scale_linear)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -223,7 +223,7 @@ module FreeImage
     #
     def dither(algorithm, &block)
       ptr = FreeImage.FreeImage_Dither(self, algorithm)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -247,7 +247,7 @@ module FreeImage
         raise(RangeError, "Value is out of range 0..255. Value: #{value}")
       end
       ptr = FreeImage.FreeImage_Threshold(self, value)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
   end

@@ -63,7 +63,7 @@ module FreeImage
     #
     def composite(background_bitmap, &block)
       ptr = FreeImage.FreeImage_Composite(self, false, nil, background_bitmap)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -85,7 +85,7 @@ module FreeImage
     #
     def composite_with_color(background_color, &block)
       ptr = FreeImage.FreeImage_Composite(self, false, background_color, nil)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -106,7 +106,7 @@ module FreeImage
     #
     def copy(left, top, right, bottom, &block)
       ptr = FreeImage.FreeImage_Copy(self, left, top, right, bottom)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -152,7 +152,7 @@ module FreeImage
     #
     def enlarge_canvas(left, top, right, bottom, color, options = 0, &block)
       ptr = FreeImage.FreeImage_EnlargeCanvas(self, left, top, right, bottom, color, options)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -211,7 +211,7 @@ module FreeImage
     #
     def make_thumbnail(max_pixel_size, convert = true, &block)
       ptr = FreeImage.FreeImage_MakeThumbnail(self, max_pixel_size, convert)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 
@@ -293,7 +293,7 @@ module FreeImage
     #
     def rescale(width, height, filter = :bilinear, &block)
       ptr = FreeImage.FreeImage_Rescale(self, width, height, filter)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
   end

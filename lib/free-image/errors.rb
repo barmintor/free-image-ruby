@@ -35,10 +35,16 @@ module FreeImage
   end
   FreeImage_SetOutputMessage(CALLBACK)
 
-  def check_last_error
+  def check_last_error(ptr=nil)
     error = Thread.current[LAST_ERROR]
     Thread.current[LAST_ERROR] = nil
-    raise(error) if error
+    if error
+      if ptr.nil? or ptr.null?
+        raise(error)
+      else
+        puts "#{error.format}: #{error.message}"
+      end
+    end
   end
   module_function :check_last_error
 end

@@ -86,7 +86,7 @@ module FreeImage
     def background_color
       ptr = FFI::MemoryPointer.new(:pointer)
       FreeImage.FreeImage_GetBackgroundColor(self, ptr)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       RGBQuad.new(ptr)
     end
 

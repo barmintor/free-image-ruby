@@ -73,7 +73,7 @@ module FreeImage
     #
     def self.create(width, height, bits_per_pixel, red_mask = 0, green_mask = 0, blue_mask = 0)
       ptr = FreeImage.FreeImage_Allocate(width, height, bits_per_pixel, red_mask, green_mask, blue_mask)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       new(ptr)
     end
 
@@ -143,7 +143,7 @@ module FreeImage
     #
     def clone(&block)
       ptr = FreeImage.FreeImage_Clone(self)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       self.class.new(ptr, &block)
     end
 

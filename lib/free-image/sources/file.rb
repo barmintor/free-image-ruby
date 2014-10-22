@@ -108,7 +108,7 @@ module FreeImage
        # raise(Error, "Cannot load unknown file format")
       end
       ptr = FreeImage.FreeImage_Load(format, @image_path, flags)
-      FreeImage.check_last_error
+      FreeImage.check_last_error(ptr)
       ptr
     end
   end
